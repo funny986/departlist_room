@@ -34,78 +34,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_01:
                 forToast = depName = dep[0];
                 lstContact.clear();
-                List<DepartOne> departOneList = departDataBase.departOneDao().getAll();
-                for (DepartOne departOne : departOneList){
-                    lstContact.add(new Contact(
-                            departOne.lastName,
-                            departOne.firstName,
-                            departOne.middleName,
-                            departOne.positionName,
-                            departOne.phone,
-                            departOne.id
-                    ));
-                }
+                lstContact = departDataBase.departmentDao().getContactsList(1);
+//                lstContact = departDataBase.contactsDao().getContactsList(1);
 
                 break;
             case R.id.btn_02:
                 forToast = depName = dep[1];
                 lstContact.clear();
-                List<DepartTwo> departTwoList = departDataBase.departTwoDao().getAll();
-                for (DepartTwo departTwo : departTwoList){
-                    lstContact.add(new Contact(
-                            departTwo.lastName,
-                            departTwo.firstName,
-                            departTwo.middleName,
-                            departTwo.positionName,
-                            departTwo.phone,
-                            departTwo.id
-                    ));
-                }
+                lstContact = departDataBase.departmentDao().getContactsList(2);
+//                lstContact = departDataBase.contactsDao().getContactsList(2);
+
                 break;
             case R.id.btn_03:
                 forToast = depName = dep[2];
                 lstContact.clear();
-                List<DepartThree> departThreeList = departDataBase.departThreeDao().getAll();
-                for (DepartThree departThree : departThreeList){
-                    lstContact.add(new Contact(
-                            departThree.lastName,
-                            departThree.firstName,
-                            departThree.middleName,
-                            departThree.positionName,
-                            departThree.phone,
-                            departThree.id
-                    ));
-                }
+                lstContact = departDataBase.departmentDao().getContactsList(3);
+//                lstContact = departDataBase.contactsDao().getContactsList(3);
+
                 break;
             case R.id.btn_04:
                 forToast = depName = dep[3];
                 lstContact.clear();
-                List<DepartFour> departFourList = departDataBase.departFourDao().getAll();
-                for (DepartFour departFour : departFourList){
-                    lstContact.add(new Contact(
-                            departFour.lastName,
-                            departFour.firstName,
-                            departFour.middleName,
-                            departFour.positionName,
-                            departFour.phone,
-                            departFour.id
-                    ));
-                }
+                lstContact = departDataBase.departmentDao().getContactsList(4);
+//                lstContact = departDataBase.contactsDao().getContactsList(4);
+
                 break;
             case R.id.btn_05:
                 forToast = depName = dep[4];
                 lstContact.clear();
-                List<DepartFive> departFiveList = departDataBase.departFiveDao().getAll();
-                for (DepartFive departFive : departFiveList){
-                    lstContact.add(new Contact(
-                            departFive.lastName,
-                            departFive.firstName,
-                            departFive.middleName,
-                            departFive.positionName,
-                            departFive.phone,
-                            departFive.id
-                    ));
-                }
+                lstContact = departDataBase.departmentDao().getContactsList(5);
+//                lstContact = departDataBase.contactsDao().getContactsList(5);
+
                 break;
         }
         Intent intent = new Intent(getApplicationContext(), OpenContact.class);

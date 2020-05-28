@@ -1,5 +1,6 @@
 package dataBases;
 
+import android.database.Cursor;
 import androidx.room.*;
 import utils.Contact;
 
