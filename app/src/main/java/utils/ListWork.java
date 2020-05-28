@@ -1,7 +1,5 @@
 package utils;
 
-import android.content.res.Resources;
-import com.departlistv3.R;
 import dataBases.*;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -72,15 +70,13 @@ public class ListWork {
         formatWatcher.installOn(textView);
     }
 
-    public static void setDataContactList(@NonNull DepartDataBase dataBase, String[] list){
+    public static void setDataContactList(@NonNull DepartDataBase dataBase, @NonNull String[] list){
 
         Department department1 = new Department(1, list[0]);
         Department department2 = new Department(2, list[1]);
         Department department3 = new Department(3, list[2]);
         Department department4 = new Department(4, list[3]);
         Department department5 = new Department(5, list[4]);
-
-
 
         dataBase.departmentDao().insert(department1);
         dataBase.departmentDao().insert(department2);

@@ -1,9 +1,16 @@
 package dataBases;
 
+import android.database.Cursor;
 import androidx.room.*;
+import utils.Contact;
+
+import java.util.ArrayList;
 
 @Dao
 public interface ContactsDao {
+
+//    @Query("SELECT * FROM contacts WHERE department_id = :departmentID")
+//    ArrayList<Contact> getContactsList(int departmentID);
 
     @Query("SELECT * FROM contacts WHERE last_name = :lastName")
     Contacts getLastName(String lastName);
