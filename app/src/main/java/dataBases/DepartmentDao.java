@@ -10,7 +10,7 @@ import java.util.List;
 public interface DepartmentDao {
 
     @Query("SELECT * FROM contacts WHERE department_id = :departmentID")
-    public ArrayList<Contact> getContactsList(int departmentID);
+    List<Contacts> getContactsList(int departmentID);
 
     @Query("SELECT * FROM department WHERE name = :name")
     Department getDepartmentName(String name);

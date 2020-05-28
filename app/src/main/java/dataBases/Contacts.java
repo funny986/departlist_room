@@ -12,11 +12,11 @@ import androidx.room.PrimaryKey;
                     childColumns = "department_id",
                     parentColumns = "id"
             ))
-
 public class Contacts {
 
+
     public Contacts(int id, int departmentID, String lastName, String firstName, String middleName, String positionName,
-                                            String phone){
+                    String phone){
         this.id = id;
         this.departmentID = departmentID;
         this.lastName = lastName;
@@ -47,5 +47,32 @@ public class Contacts {
 
     @ColumnInfo(name = "phone")
     String phone;
+    public int getId() {
+        return id;
+    }
+
+    public int getDepartmentID() {
+        return departmentID;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public String getPositionName() {
+        return positionName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.departlistv3;
 
+import android.provider.ContactsContract;
 import dataBases.*;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -28,84 +29,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String forToast;
 
     public static List<Contact> lstContact;
+    public static List<Contacts> contactsList;
+
 
     public void onClick (@NonNull View v) {
         switch (v.getId()) {
             case R.id.btn_01:
                 forToast = depName = dep[0];
                 lstContact.clear();
-                List<DepartOne> departOneList = departDataBase.departOneDao().getAll();
-                for (DepartOne departOne : departOneList){
-                    lstContact.add(new Contact(
-                            departOne.lastName,
-                            departOne.firstName,
-                            departOne.middleName,
-                            departOne.positionName,
-                            departOne.phone,
-                            departOne.id
-                    ));
-                }
-
+                contactsList = new ArrayList<>();
+                contactsList = departDataBase.departmentDao().getContactsList(1);
                 break;
             case R.id.btn_02:
                 forToast = depName = dep[1];
                 lstContact.clear();
-                List<DepartTwo> departTwoList = departDataBase.departTwoDao().getAll();
-                for (DepartTwo departTwo : departTwoList){
-                    lstContact.add(new Contact(
-                            departTwo.lastName,
-                            departTwo.firstName,
-                            departTwo.middleName,
-                            departTwo.positionName,
-                            departTwo.phone,
-                            departTwo.id
-                    ));
-                }
                 break;
             case R.id.btn_03:
                 forToast = depName = dep[2];
                 lstContact.clear();
-                List<DepartThree> departThreeList = departDataBase.departThreeDao().getAll();
-                for (DepartThree departThree : departThreeList){
-                    lstContact.add(new Contact(
-                            departThree.lastName,
-                            departThree.firstName,
-                            departThree.middleName,
-                            departThree.positionName,
-                            departThree.phone,
-                            departThree.id
-                    ));
-                }
                 break;
             case R.id.btn_04:
                 forToast = depName = dep[3];
                 lstContact.clear();
-                List<DepartFour> departFourList = departDataBase.departFourDao().getAll();
-                for (DepartFour departFour : departFourList){
-                    lstContact.add(new Contact(
-                            departFour.lastName,
-                            departFour.firstName,
-                            departFour.middleName,
-                            departFour.positionName,
-                            departFour.phone,
-                            departFour.id
-                    ));
-                }
                 break;
             case R.id.btn_05:
                 forToast = depName = dep[4];
                 lstContact.clear();
-                List<DepartFive> departFiveList = departDataBase.departFiveDao().getAll();
-                for (DepartFive departFive : departFiveList){
-                    lstContact.add(new Contact(
-                            departFive.lastName,
-                            departFive.firstName,
-                            departFive.middleName,
-                            departFive.positionName,
-                            departFive.phone,
-                            departFive.id
-                    ));
-                }
                 break;
         }
         Intent intent = new Intent(getApplicationContext(), OpenContact.class);
