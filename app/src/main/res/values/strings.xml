@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">Отделы</string>
+    <string-array name="lists">
+        <item>ЦИТС</item>
+        <item>Пожарная Охрана</item>
+        <item>Служба Безопасности</item>
+        <item>Горячая Линия</item>
+        <item>Руководство</item>
+    </string-array>
+
+    <string name="title_activity_members">Данные</string>
+
+    <string name="list_members_of_item">Список сотрудников</string>
+    <string name="for_toast">selected</string>
+    <string name="del_member">Удалить сотрудника</string>
+    <string name="anew_member">Добавить нового сотрудника</string>
+    <string name="closing_app">Закрыть приложение</string>
+    <string name="edit_members">Правка списка</string>
+
+    <string name="data_edit">Правка данных</string>
+
+    <string name="adding">Добавить:</string>
+    <string name="last_name">Фамилия</string>
+    <string name="phone_numberin">Номер телефона (без 8)</string>
+    <string name="first_name">Имя</string>
+    <string name="middle_name">Отчество</string>
+    <string name="position_name">Должность</string>
+    <string name="data_newmember">Данные о сотруднике:</string>
+
+    <string name="inter_firstname">Введите Имя сотрудника!</string>
+    <string name="inter_lastname">Введите Фамилию сотрудника!</string>
+    <string name="inter_middlename">Введите Отчество сотрудника!</string>
+    <string name="inter_position">Введите Должность сотрудника!</string>
+    <string name="inter_phonenumber">Введите Телефонный Номер сотрудника!</string>
+    <string name="dialog_txtname">Поле не должно быть пустым и содержать только буквы кириллицы без пробелов</string>
+    <string name="dialog_txtphone">Введите 10 последних цифр номера</string>
+
+    <item name="btn_01" type="id"/>
+    <item name="btn_02" type="id"/>
+    <item name="btn_03" type="id"/>
+    <item name="btn_04" type="id"/>
+    <item name="btn_05" type="id"/>
+    <item name="listv" type="id"/>
+
+    <integer name="quantity_departments">5</integer>
+    <integer name="textsize">20</integer>
+    <integer name="length_editor">5</integer>
+
+    <string name="edit_data_member">Изменить данные сотрудника</string>
+
+    <string name="pos_tv">
+        <u>
+            <i>Должность:</i>
+        </u>
+    </string>
+    <string name="FIO">
+        <u>
+            <i>Ф.И.О.:</i>
+        </u>
+    </string>
+    <string name="n_one">
+        <u>
+            <i>Номер телефона:</i>
+        </u>
+    </string>
+
+    <string name="toast_delCont">Контакт удален!</string>
+    <string name="toast_delDialog">\" удален!\"</string>
+    <string name="toast_editDialog">Измнение</string>
+    <string name="toast_open">Выбран</string>
+    <string name="toast_editM">Данные изменены!</string>
+    <string name="toast_addM">Ошибка в поле!</string>
+    <string name="toast_addM2">Контакт создан!</string>
+
+</resources>

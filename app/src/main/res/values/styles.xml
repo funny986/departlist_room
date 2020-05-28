@@ -1,0 +1,75 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--        <item name="colorAccent">#06D5C0</item>-->
+
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    
+    <style name="CustomAlert" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+<!--        <item name="colorAccent">#201432</item>-->
+    </style>
+
+    <style name="title_style">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="body_style">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:layout_marginLeft">25dp</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+
+    <style name="textViewStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor"> @color/colorAccent</item>
+
+    </style>
+
+    <style name="number_style">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">#231142</item>
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_marginLeft">25dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:autoLink">phone</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark</item>
+    </style>
+
+    <style name="button_style">
+        <item name="android:background">@drawable/btn_round</item>
+        <item name="android:layout_margin">32dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">65dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:padding">20dp</item>
+<!--        <item name="android:paddingLeft">50dip</item>-->
+<!--        <item name="android:paddingRight">26dip</item>-->
+
+        <!--        <item name="android:textStyle">bold</item-->
+        <item name="android:gravity">center</item>
+<!--        <item name="android:includeFontPadding">false</item>-->
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">20dp</item>
+
+    </style>
+
+
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    
+    tools:context=".OpenContacts">
+
+            <item
+                android:id="@+id/search_member"
+                android:title="Поиск"
+                android:icon="@drawable/ic_search"
+                app:actionViewClass="android.widget.SearchView"
+                app:showAsAction="ifRoom"/>
+
+            <item android:id="@+id/anew_member"
+                android:title="@string/anew_member"
+                app:showAsAction="never"/>
+           <item android:id="@+id/edit_member"
+            android:title="@string/edit_data_member"
+            app:showAsAction="never"/>
+
+           <item android:id="@+id/del_member"
+                android:title="@string/del_member"
+                app:showAsAction="never"/>
+           <item android:id="@+id/closing_app"
+               android:title="@string/closing_app"
+               app:showAsAction="never"/>
+</menu>
