@@ -124,8 +124,9 @@ public class AddMember extends AppCompatActivity {
                             phoneNameNew.getText().toString());
                     if (!getResolution()) this.onRestart();
                     else {
-                        Contacts contactsNew = new Contacts(100, getIntent().getIntExtra("departmentId", 0),
-//                        Contacts contactsNew = new Contacts(100, departDataBase.departmentDao().getDepartmentName(depName).getId(),
+                        int idNew = lstContact.get(lstContact.size()).getId() + 1;
+                        Contacts contactsNew = new Contacts(idNew,
+                                departDataBase.departmentDao().getDepartmentName(depName).getId(),
                                 lastNameNew.getText().toString(),
                                 firstNameNew.getText().toString(),
                                 middleNameNew.getText().toString(),

@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 lstContact.clear();
                 lstContact = departDataBase.departmentDao().getContactsList(1);
                 intent.putExtra("departmentId", 1);
+                intent.putExtra("contactId", lstContact.get(lstContact.size()).getId());
                 break;
             case R.id.btn_02:
                 forToast = depName = dep[1];

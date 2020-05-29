@@ -17,6 +17,8 @@ import androidx.fragment.app.FragmentManager;
 import dataBases.Contacts;
 import utils.DialogEditMember;
 
+import static com.departlistv3.MainActivity.depName;
+import static com.departlistv3.MainActivity.departDataBase;
 import static utils.ListWork.*;
 
 public class EditMember extends AddMember implements DialogEditMember.NoticeDialogListener {
@@ -59,10 +61,15 @@ public class EditMember extends AddMember implements DialogEditMember.NoticeDial
                         phoneNameEdit.getText().toString());
                 if (!getResolution()) this.onRestart();
                 else {
-//                    String where = KEY_ID + "=" + editId;
-//                    database.update(getTABLENAME(), contentValues, where, null);
-//                    setResult(RESULT_OK, intent);
-
+                    Contacts contactsEdit = new Contacts(
+                            getIntent().getIntExtra("contantId", 1000),
+                            getIntent().getIntExtra("departmentId", 0),
+                            lastNameEdit.getText().toString(),
+                            firstNameEdit.getText().toString(),
+                            middleNameEdit.getText().toString(),
+                            positionNameEdit.getText().toString(),
+                            phoneNameEdit.getText().toString());
+                    departDataBase.contactsDao().update(contactsEdit);
                     Toast.makeText(getApplicationContext(),
                             R.string.toast_editM,
                             Toast.LENGTH_SHORT)
@@ -86,6 +93,7 @@ public class EditMember extends AddMember implements DialogEditMember.NoticeDial
         positionNameEdit = findViewById(R.id.position_name);
 
         boolean con = getIntent().getBooleanExtra("contex", false);
+        setEditId(getIntent().getIntExtra("id", 0));
 
         if (!con) {
             FragmentManager fragmentManager = getSupportFragmentManager();
@@ -99,7 +107,6 @@ public class EditMember extends AddMember implements DialogEditMember.NoticeDial
             middleNameEdit.setText(getIntent().getStringExtra("middlename"));
             positionNameEdit.setText(getIntent().getStringExtra("position"));
             phoneNameEdit.setText(getIntent().getStringExtra("phone"));
-            setEditId(getIntent().getIntExtra("id", 0));
         }
     }
 }

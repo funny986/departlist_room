@@ -32,4 +32,11 @@ public interface ContactsDao {
     @Delete
     void delete(Contacts contacts);
 
+//    @Update
+//    void update(int id);
+//
+//    @Delete
+//    void delete(Contacts contacts);
+
+
 }
