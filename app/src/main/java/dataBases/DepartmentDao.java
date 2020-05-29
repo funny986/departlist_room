@@ -9,10 +9,6 @@ public interface DepartmentDao {
     @Query("SELECT * FROM contacts WHERE department_id = :departmentID ORDER BY last_name")
     List<Contacts> getContactsList(int departmentID);
 
-    @Query("SELECT * FROM contacts WHERE name = :name ORDER BY last_name")
-    List<Contacts> getContactsListName(String name);
-
-
     @Query("SELECT * FROM department WHERE name = :name")
     Department getDepartmentName(String name);
 

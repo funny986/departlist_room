@@ -29,11 +29,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static List<Contacts> lstContact;
 
     public void onClick (@NonNull View v) {
+        Intent intent = new Intent(getApplicationContext(), OpenContact.class);
         switch (v.getId()) {
             case R.id.btn_01:
                 forToast = depName = dep[0];
                 lstContact.clear();
                 lstContact = departDataBase.departmentDao().getContactsList(1);
+                intent.putExtra("departmentId", 1);
                 break;
             case R.id.btn_02:
                 forToast = depName = dep[1];
@@ -56,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 lstContact = departDataBase.departmentDao().getContactsList(5);
                 break;
         }
-        Intent intent = new Intent(getApplicationContext(), OpenContact.class);
+//        Intent intent = new Intent(getApplicationContext(), OpenContact.class);
         Toast.makeText(getApplicationContext(),
                 forToast,
                 Toast.LENGTH_SHORT)

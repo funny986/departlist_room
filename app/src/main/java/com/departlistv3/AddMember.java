@@ -124,17 +124,15 @@ public class AddMember extends AppCompatActivity {
                             phoneNameNew.getText().toString());
                     if (!getResolution()) this.onRestart();
                     else {
-//                        Intent intent = new Intent();
-//                        database.insert(getTABLENAME(), null, contentValues);
-//                        setResult(RESULT_OK, intent);
-                        Contacts contactsNew = new Contacts(100, departDataBase.departmentDao().getDepartmentName(depName).getId(),
+                        Contacts contactsNew = new Contacts(100, getIntent().getIntExtra("departmentId", 0),
+//                        Contacts contactsNew = new Contacts(100, departDataBase.departmentDao().getDepartmentName(depName).getId(),
                                 lastNameNew.getText().toString(),
                                 firstNameNew.getText().toString(),
                                 middleNameNew.getText().toString(),
                                 positionNameNew.getText().toString(),
                                 phoneNameNew.getText().toString());
                         lstContact.add(contactsNew);
-
+                        departDataBase.contactsDao().insert(contactsNew);
                         Toast.makeText(getApplicationContext(),
                                 R.string.toast_addM2,
                                 Toast.LENGTH_SHORT)
