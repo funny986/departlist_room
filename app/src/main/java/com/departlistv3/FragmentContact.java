@@ -11,11 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import utils.*;
 
 import static com.departlistv3.MainActivity.lstContact;
-import static utils.ListWork.*;
 
 public class FragmentContact extends Fragment {
     View v;
-
 
     public static RecyclerView mrecycle;
 
@@ -36,8 +34,6 @@ public class FragmentContact extends Fragment {
         registerForContextMenu(mrecycle);
         return v;
     }
-
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

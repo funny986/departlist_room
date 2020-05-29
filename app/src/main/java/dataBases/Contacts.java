@@ -47,6 +47,7 @@ public class Contacts {
 
     @ColumnInfo(name = "phone")
     String phone;
+
     public int getId() {
         return id;
     }

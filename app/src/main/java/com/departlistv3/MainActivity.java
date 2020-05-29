@@ -13,7 +13,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import utils.Contact;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,36 +22,38 @@ import static utils.ListWork.*;
 @SuppressWarnings("ALL")
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button[] butn;
-    private String[] dep;
+    private   String[] dep;
     public static String depName;
     String forToast;
 
-    public static List<Contact> lstContact;
-    public static List<Contacts> contactsList;
+    public static List<Contacts> lstContact;
 
     public void onClick (@NonNull View v) {
         switch (v.getId()) {
             case R.id.btn_01:
                 forToast = depName = dep[0];
                 lstContact.clear();
-                contactsList = new ArrayList<>();
-                contactsList = departDataBase.departmentDao().getContactsList(1);
+                lstContact = departDataBase.departmentDao().getContactsList(1);
                 break;
             case R.id.btn_02:
                 forToast = depName = dep[1];
                 lstContact.clear();
+                lstContact = departDataBase.departmentDao().getContactsList(2);
                 break;
             case R.id.btn_03:
                 forToast = depName = dep[2];
                 lstContact.clear();
+                lstContact = departDataBase.departmentDao().getContactsList(3);
                 break;
             case R.id.btn_04:
                 forToast = depName = dep[3];
                 lstContact.clear();
+                lstContact = departDataBase.departmentDao().getContactsList(4);
                 break;
             case R.id.btn_05:
                 forToast = depName = dep[4];
                 lstContact.clear();
+                lstContact = departDataBase.departmentDao().getContactsList(5);
                 break;
         }
         Intent intent = new Intent(getApplicationContext(), OpenContact.class);
@@ -97,7 +98,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dep = resources.getStringArray(R.array.lists);
         departDataBase = App.getInstance().getDataBase();
         setDataContactList(departDataBase, dep);
-//        setDataContactList(departDataBase);
         lstContact = new ArrayList<>();
         for (int i=0; i < butn.length; i++) {
             butn[i].setText(dep[i]);

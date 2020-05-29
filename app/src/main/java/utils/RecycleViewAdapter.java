@@ -11,19 +11,22 @@ import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.departlistv3.R;
+import dataBases.Contacts;
+
 import java.util.List;
 
+import static com.departlistv3.MainActivity.lstContact;
 import static utils.ListWork.inputNumberPhoneMask;
 
 public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.MyViewHolder> {
 
     Context mContext;
-    List<Contact> mData;
+//    List<Contacts> mData;
     Dialog myDialog;
 
-    public RecycleViewAdapter(Context context, List<Contact> mData) {
+    public RecycleViewAdapter(Context context, List<Contacts> mData) {
         this.mContext = context;
-        this.mData = mData;
+//        this.mData = mData;
         notifyDataSetChanged();
 
     }
@@ -45,12 +48,12 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                     TextView dialog_position_tv = myDialog.findViewById(R.id.dialod_positionname_id);
                     final TextView dialog_phone_tv = myDialog.findViewById(R.id.dialog_phone_id);
                     inputNumberPhoneMask(dialog_phone_tv);
-                    dialog_lastname_tv.setText(mData.get(myViewHolder.getAdapterPosition()).getLastName());
-                    dialog_firstname_tv.setText(mData.get(myViewHolder.getAdapterPosition()).getFirstName()
-                     + "  " +  mData.get(myViewHolder.getAdapterPosition()).getMiddleName());
-                    dialog_position_tv.setText(mData.get(myViewHolder.getAdapterPosition()).getPosition());
-                    dialog_phone_tv.setText(mData.get(myViewHolder.getAdapterPosition()).getPhone());
-                    Toast.makeText(mContext, "" + mData.get(myViewHolder.getAdapterPosition()).getLastName(),
+                    dialog_lastname_tv.setText(lstContact.get(myViewHolder.getAdapterPosition()).getLastName());
+                    dialog_firstname_tv.setText(lstContact.get(myViewHolder.getAdapterPosition()).getFirstName()
+                     + "  " +  lstContact.get(myViewHolder.getAdapterPosition()).getMiddleName());
+                    dialog_position_tv.setText(lstContact.get(myViewHolder.getAdapterPosition()).getPositionName());
+                    dialog_phone_tv.setText(lstContact.get(myViewHolder.getAdapterPosition()).getPhone());
+                    Toast.makeText(mContext, "" + lstContact.get(myViewHolder.getAdapterPosition()).getLastName(),
                             Toast.LENGTH_SHORT)
                             .show();
                     myDialog.show();
@@ -80,14 +83,14 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
         @Override
         public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
-            holder.tv_last_name.setText(mData.get(position).getLastName() + "   " +
-                    mData.get(position).getFirstName().charAt(0) + "." + " " +
-                    mData.get(position).getMiddleName().charAt(0) + ".");
+            holder.tv_last_name.setText(lstContact.get(position).getLastName() + "   " +
+                    lstContact.get(position).getFirstName().charAt(0) + "." + " " +
+                    lstContact.get(position).getMiddleName().charAt(0) + ".");
         }
 
         @Override
         public int getItemCount() {
-            return mData.size();
+            return lstContact.size();
         }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {

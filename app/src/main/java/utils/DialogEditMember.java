@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import com.departlistv3.R;
+import dataBases.Contacts;
 
 import static com.departlistv3.MainActivity.lstContact;
 
@@ -20,7 +21,7 @@ public class DialogEditMember extends DialogFragment {
     private NoticeDialogListener mListener;
 
     public interface NoticeDialogListener {
-         void onDialogPositiveClick(DialogFragment dialog, Contact contact);
+         void onDialogPositiveClick(DialogFragment dialog, Contacts contact);
          void onDialogNegativeClick(DialogFragment dialog);
     }
     @SuppressWarnings("deprecation")

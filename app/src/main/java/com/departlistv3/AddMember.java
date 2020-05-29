@@ -18,8 +18,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
+import dataBases.Contacts;
 import utils.DialogAddMember;
-import static com.departlistv3.OpenContact.*;
+
+import static com.departlistv3.MainActivity.*;
 import static utils.ListWork.*;
 
 public class AddMember extends AppCompatActivity {
@@ -122,9 +124,17 @@ public class AddMember extends AppCompatActivity {
                             phoneNameNew.getText().toString());
                     if (!getResolution()) this.onRestart();
                     else {
-                        Intent intent = new Intent();
+//                        Intent intent = new Intent();
 //                        database.insert(getTABLENAME(), null, contentValues);
-                        setResult(RESULT_OK, intent);
+//                        setResult(RESULT_OK, intent);
+                        Contacts contactsNew = new Contacts(100, departDataBase.departmentDao().getDepartmentName(depName).getId(),
+                                lastNameNew.getText().toString(),
+                                firstNameNew.getText().toString(),
+                                middleNameNew.getText().toString(),
+                                positionNameNew.getText().toString(),
+                                phoneNameNew.getText().toString());
+                        lstContact.add(contactsNew);
+
                         Toast.makeText(getApplicationContext(),
                                 R.string.toast_addM2,
                                 Toast.LENGTH_SHORT)

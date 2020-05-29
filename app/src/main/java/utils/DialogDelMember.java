@@ -4,7 +4,6 @@ package utils;
         import android.app.AlertDialog;
         import android.app.Dialog;
         import android.content.DialogInterface;
-        import android.database.sqlite.SQLiteDatabase;
         import android.os.Bundle;
         import android.widget.Toast;
 
@@ -52,7 +51,7 @@ public class DialogDelMember extends DialogFragment {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int item) {
-                                id_del = lstContact.get(item).getIdName();
+                                id_del = lstContact.get(item).getId();
                                 choiseDeleting = choiseForDel[item];
                             }
                         })

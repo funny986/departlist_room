@@ -13,10 +13,10 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
+import dataBases.Contacts;
 import utils.*;
 
 import static com.departlistv3.MainActivity.*;
-import static utils.ListWork.*;
 
 
 public class OpenContact extends AppCompatActivity implements DialogDelMember.NoticeDialogListener,
@@ -24,7 +24,7 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
 
     private Intent editmemder;
 
-    public ArrayList<Contact> searchList = new ArrayList<>();
+    public ArrayList<Contacts> searchList = new ArrayList<>();
     private SearchView searchView;
 
     @Override
@@ -63,30 +63,30 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
                     editmemder.putExtra("lastname", searchList.get(pos).getLastName());
                     editmemder.putExtra("firstname", searchList.get(pos).getFirstName());
                     editmemder.putExtra("middlename", searchList.get(pos).getMiddleName());
-                    editmemder.putExtra("position", searchList.get(pos).getPosition());
+                    editmemder.putExtra("position", searchList.get(pos).getPositionName());
                     editmemder.putExtra("phone", searchList.get(pos).getPhone());
-                    editmemder.putExtra("id", searchList.get(pos).getIdName());
+                    editmemder.putExtra("id", searchList.get(pos).getId());
                     startActivityForResult(editmemder, 2);
                 } else {
                     editmemder.putExtra("contex", true);
                     editmemder.putExtra("lastname", lstContact.get(pos).getLastName());
                     editmemder.putExtra("firstname", lstContact.get(pos).getFirstName());
                     editmemder.putExtra("middlename", lstContact.get(pos).getMiddleName());
-                    editmemder.putExtra("position", lstContact.get(pos).getPosition());
+                    editmemder.putExtra("position", lstContact.get(pos).getPositionName());
                     editmemder.putExtra("phone", lstContact.get(pos).getPhone());
-                    editmemder.putExtra("id", lstContact.get(pos).getIdName());
+                    editmemder.putExtra("id", lstContact.get(pos).getId());
                     startActivityForResult(editmemder, 2);
                 }
                 break;
             case R.id.delete_context:
                 int id;
                 if (!searchList.isEmpty()) {
-                    id = searchList.get(pos).getIdName();
+                    id = searchList.get(pos).getId();
                     name = " \n" + searchList.get(pos).getLastName() + " " +
                             searchList.get(pos).getFirstName() + " " +
                             searchList.get(pos).getMiddleName();
                 } else {
-                    id = lstContact.get(pos).getIdName();
+                    id = lstContact.get(pos).getId();
                     name = " \n" + lstContact.get(pos).getLastName() + " " +
                             lstContact.get(pos).getFirstName() + " " +
                             lstContact.get(pos).getMiddleName();
@@ -112,9 +112,9 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
 
             @Override
             public boolean onQueryTextChange(String searchText) {
-                ArrayList<Contact> tempString = new ArrayList<>();
+                ArrayList<Contacts> tempString = new ArrayList<>();
                 searchList.clear();
-                for (Contact tempCont : lstContact) {
+                for (Contacts tempCont : lstContact) {
                     String temp = tempCont.getLastName();
                     if (temp.toLowerCase().contains(searchText.toLowerCase())) {
                         tempString.add(tempCont);
@@ -129,32 +129,33 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
         return super.onCreateOptionsMenu(menu);
     } //optionMenu
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-//            switch (requestCode){
-//                case 1:
-//                    createNewList();
-//                    recycleViewAdapter.notifyDataSetChanged();
-//                break;
-//                case 2:
-//                    createNewList();
-//                    recycleViewAdapter.notifyDataSetChanged();
-//                    FragmentManager fm = getSupportFragmentManager();
-//                          fm.beginTransaction()
-//                            .replace(R.id.container, new FragmentContact())
-//                            .commit();
-//            break;}
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (resultCode == RESULT_OK) {
+////            switch (requestCode){
+////                case 1:
+////                    createNewList();
+////                    recycleViewAdapter.notifyDataSetChanged();
+////                break;
+////                case 2:
+////                    createNewList();
+////                    recycleViewAdapter.notifyDataSetChanged();
+////                    FragmentManager fm = getSupportFragmentManager();
+////                          fm.beginTransaction()
+////                            .replace(R.id.container, new FragmentContact())
+////                            .commit();
+////            break;}
+//        }
+//    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.anew_member:
                 Intent addmemder = new Intent(this, AddMember.class);
-                startActivityForResult(addmemder, 1);
+                startActivity(addmemder);
+//                startActivityForResult(addmemder, 1);
                 return true;
             case R.id.del_member:
                 DialogDelMember dialogDelMember = new DialogDelMember();
@@ -162,13 +163,13 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
                 return true;
             case R.id.edit_member:
                 editmemder = new Intent(this, EditMember.class);
-                startActivityForResult(editmemder, 2);
+                startActivity(editmemder);
+//                startActivityForResult(editmemder, 2);
                 return true;
             case R.id.closing_app:
                 finishAffinity();
                 return true;
             case android.R.id.home:
-//                setFalse(flagsOfList, flagsOfList.size());
                 this.finish();
                 return true;
             default:

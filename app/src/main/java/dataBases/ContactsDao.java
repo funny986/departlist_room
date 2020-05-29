@@ -1,10 +1,6 @@
 package dataBases;
 
-import android.database.Cursor;
 import androidx.room.*;
-import utils.Contact;
-
-import java.util.ArrayList;
 
 @Dao
 public interface ContactsDao {
@@ -27,7 +23,7 @@ public interface ContactsDao {
     @Query("SELECT * FROM contacts WHERE phone = :phone")
     Contacts getPhone(String phone);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Contacts contacts);
 
     @Update

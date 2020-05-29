@@ -14,12 +14,13 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
-import utils.Contact;
+import dataBases.Contacts;
 import utils.DialogEditMember;
 
 import static utils.ListWork.*;
 
 public class EditMember extends AddMember implements DialogEditMember.NoticeDialogListener {
+
     private  EditText firstNameEdit, lastNameEdit, positionNameEdit,
                             middleNameEdit, phoneNameEdit;
     private Intent intent = new Intent();
@@ -31,13 +32,13 @@ public class EditMember extends AddMember implements DialogEditMember.NoticeDial
     }
 
     @Override
-    public void onDialogPositiveClick(DialogFragment dialog, @NonNull Contact contact) {
+    public void onDialogPositiveClick(DialogFragment dialog, @NonNull Contacts contact) {
         lastNameEdit.setText(contact.getLastName());
         firstNameEdit.setText(contact.getFirstName());
         middleNameEdit.setText(contact.getMiddleName());
-        positionNameEdit.setText(contact.getPosition());
+        positionNameEdit.setText(contact.getPositionName());
         phoneNameEdit.setText(contact.getPhone());
-        setEditId(contact.getIdName());
+        setEditId(contact.getId());
     }
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
