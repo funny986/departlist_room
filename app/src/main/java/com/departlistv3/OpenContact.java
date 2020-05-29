@@ -34,7 +34,6 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
 
     protected void onDestroy() {
         super.onDestroy();
-//        setFalse(flagsOfList, flagsOfList.size());
     }
 
     @Override
@@ -121,41 +120,40 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
                     }
                 }
                 searchList = tempString;
-                FragmentContact.recycleViewAdapter = new RecycleViewAdapter(getApplicationContext(), searchList);
-                FragmentContact.mrecycle.setAdapter(FragmentContact.recycleViewAdapter);
+//                FragmentContact.recycleViewAdapter = new RecycleViewAdapter(getApplicationContext(), searchList);
+//                FragmentContact.mrecycle.setAdapter(FragmentContact.recycleViewAdapter);
                 return true;
             }
         });
         return super.onCreateOptionsMenu(menu);
     } //optionMenu
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (resultCode == RESULT_OK) {
-////            switch (requestCode){
-////                case 1:
-////                    createNewList();
-////                    recycleViewAdapter.notifyDataSetChanged();
-////                break;
-////                case 2:
-////                    createNewList();
-////                    recycleViewAdapter.notifyDataSetChanged();
-////                    FragmentManager fm = getSupportFragmentManager();
-////                          fm.beginTransaction()
-////                            .replace(R.id.container, new FragmentContact())
-////                            .commit();
-////            break;}
-//        }
-//    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode){
+                case 1:
+
+                break;
+                case 2:
+//                    createNewList();
+//                    recycleViewAdapter.notifyDataSetChanged();
+//                    FragmentManager fm = getSupportFragmentManager();
+//                          fm.beginTransaction()
+//                            .replace(R.id.container, new FragmentContact())
+//                            .commit();
+            break;}
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.anew_member:
                 Intent addmemder = new Intent(this, AddMember.class);
-                startActivity(addmemder);
-//                startActivityForResult(addmemder, 1);
+//                startActivity(addmemder);
+                startActivityForResult(addmemder, 1);
                 return true;
             case R.id.del_member:
                 DialogDelMember dialogDelMember = new DialogDelMember();

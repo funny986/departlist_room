@@ -124,16 +124,20 @@ public class AddMember extends AppCompatActivity {
                             phoneNameNew.getText().toString());
                     if (!getResolution()) this.onRestart();
                     else {
-                        int idNew = lstContact.get(lstContact.size()).getId() + 1;
-                        Contacts contactsNew = new Contacts(idNew,
-                                departDataBase.departmentDao().getDepartmentName(depName).getId(),
+//                        int idNew = 1;
+//                        if (!lstContact.isEmpty())
+//                        idNew = lstContact.get(lstContact.size() - 1).getId() + 1;
+                        Contacts contactsNew = new Contacts(getLastID() + 1,
+                                getDepId(),
                                 lastNameNew.getText().toString(),
                                 firstNameNew.getText().toString(),
                                 middleNameNew.getText().toString(),
                                 positionNameNew.getText().toString(),
                                 phoneNameNew.getText().toString());
-                        lstContact.add(contactsNew);
+                        setLastID(getLastID() + 1);
+//                        lstContact.add(contactsNew);
                         departDataBase.contactsDao().insert(contactsNew);
+                        lstContact = departDataBase.departmentDao().getContactsList(getDepId());
                         Toast.makeText(getApplicationContext(),
                                 R.string.toast_addM2,
                                 Toast.LENGTH_SHORT)

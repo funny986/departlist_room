@@ -1,5 +1,6 @@
 package com.departlistv3;
 
+import android.content.SharedPreferences;
 import dataBases.*;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -26,56 +27,74 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static String depName;
     String forToast;
 
+    public static final String APP_PREFERENCE = "launch";
+    public static final String APP_PREFERENCE_COUNT = "count";
+    public static final String APP_PREFERENCE_ID_COUNT = "countID";
+    private SharedPreferences preferences;
+    private boolean count;
+    private int lastIdCount;
+    private final int VERSION = 1;
+
     public static List<Contacts> lstContact;
 
+    protected void onResume(){
+        super.onResume();
+        if (preferences.contains(APP_PREFERENCE_COUNT)) {
+            count = preferences.getBoolean(APP_PREFERENCE_COUNT, false);
+            lastIdCount = preferences.getInt(APP_PREFERENCE_ID_COUNT, 1000);
+            if (getLastID() <= lastIdCount) {
+                setLastID(lastIdCount);
+                if (VERSION != 1) { }
+            }
+        }
+        if (!count) {
+            setLastID(1);
+            setDataContactList(departDataBase, dep);
+            count = true;
+            lastIdCount = getLastID();
+        }
+    }
+    protected void onPause(){
+        super.onPause();
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(APP_PREFERENCE_COUNT, count);
+        editor.putInt(APP_PREFERENCE_ID_COUNT, getLastID());
+        editor.apply();
+    }
     public void onClick (@NonNull View v) {
-        Intent intent = new Intent(getApplicationContext(), OpenContact.class);
         switch (v.getId()) {
             case R.id.btn_01:
                 forToast = depName = dep[0];
                 lstContact.clear();
                 lstContact = departDataBase.departmentDao().getContactsList(1);
                 setDepId(1);
-//                intent.putExtra("departmentId", 1);
-//                intent.putExtra("contactId", lstContact.get(lstContact.size() - 1).getId());
                 break;
             case R.id.btn_02:
                 forToast = depName = dep[1];
                 lstContact.clear();
                 setDepId(2);
                 lstContact = departDataBase.departmentDao().getContactsList(2);
-//                intent.putExtra("departmentId", 2);
-                intent.putExtra("contactId", lstContact.get(lstContact.size() - 1).getId());
-
                 break;
             case R.id.btn_03:
                 forToast = depName = dep[2];
                 lstContact.clear();
                 setDepId(3);
                 lstContact = departDataBase.departmentDao().getContactsList(3);
-//                intent.putExtra("departmentId", 3);
-                intent.putExtra("contactId", lstContact.get(lstContact.size() - 1).getId());
-
                 break;
             case R.id.btn_04:
                 forToast = depName = dep[3];
                 lstContact.clear();
                 setDepId(4);
                 lstContact = departDataBase.departmentDao().getContactsList(4);
-//                intent.putExtra("departmentId", 4);
-                intent.putExtra("contactId", lstContact.get(lstContact.size() - 1).getId());
-
                 break;
             case R.id.btn_05:
                 forToast = depName = dep[4];
                 lstContact.clear();
                 setDepId(5);
                 lstContact = departDataBase.departmentDao().getContactsList(5);
-//                intent.putExtra("departmentId", 5);
-                intent.putExtra("contactId", lstContact.get(lstContact.size() - 1).getId());
-
                 break;
         }
+        Intent intent = new Intent(getApplicationContext(), OpenContact.class);
         Toast.makeText(getApplicationContext(),
                 forToast,
                 Toast.LENGTH_SHORT)
@@ -108,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ActionBar bar = getSupportActionBar();
         resources = getResources();
+        preferences = getSharedPreferences(APP_PREFERENCE, this.MODE_PRIVATE);
         butn = new Button[getResources().getInteger(R.integer.quantity_departments)];
         butn[0] = findViewById(R.id.btn_01);
         butn[1] = findViewById(R.id.btn_02);
@@ -116,7 +136,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         butn[4] = findViewById(R.id.btn_05);
         dep = resources.getStringArray(R.array.lists);
         departDataBase = App.getInstance().getDataBase();
-        setDataContactList(departDataBase, dep);
         lstContact = new ArrayList<>();
         for (int i=0; i < butn.length; i++) {
             butn[i].setText(dep[i]);
