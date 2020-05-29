@@ -63,7 +63,7 @@ public class EditMember extends AddMember implements DialogEditMember.NoticeDial
                 else {
                     Contacts contactsEdit = new Contacts(
                             getIntent().getIntExtra("contantId", 1000),
-                            getIntent().getIntExtra("departmentId", 0),
+                            getDepId(),
                             lastNameEdit.getText().toString(),
                             firstNameEdit.getText().toString(),
                             middleNameEdit.getText().toString(),

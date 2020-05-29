@@ -66,7 +66,7 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
 //                    editmemder.putExtra("position", searchList.get(pos).getPositionName());
 //                    editmemder.putExtra("phone", searchList.get(pos).getPhone());
                     editmemder.putExtra("id", searchList.get(pos).getId());
-                    startActivityForResult(editmemder, 2);
+                    startActivity(editmemder);
                 } else {
                     editmemder.putExtra("contex", true);
 //                    editmemder.putExtra("lastname", lstContact.get(pos).getLastName());
@@ -75,7 +75,7 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
 //                    editmemder.putExtra("position", lstContact.get(pos).getPositionName());
 //                    editmemder.putExtra("phone", lstContact.get(pos).getPhone());
                     editmemder.putExtra("id", lstContact.get(pos).getId());
-                    startActivityForResult(editmemder, 2);
+                    startActivity(editmemder);
                 }
                 break;
             case R.id.delete_context:

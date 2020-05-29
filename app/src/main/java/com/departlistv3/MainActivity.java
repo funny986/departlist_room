@@ -35,31 +35,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 forToast = depName = dep[0];
                 lstContact.clear();
                 lstContact = departDataBase.departmentDao().getContactsList(1);
-                intent.putExtra("departmentId", 1);
-                intent.putExtra("contactId", lstContact.get(lstContact.size()).getId());
+                setDepId(1);
+//                intent.putExtra("departmentId", 1);
+//                intent.putExtra("contactId", lstContact.get(lstContact.size() - 1).getId());
                 break;
             case R.id.btn_02:
                 forToast = depName = dep[1];
                 lstContact.clear();
+                setDepId(2);
                 lstContact = departDataBase.departmentDao().getContactsList(2);
+//                intent.putExtra("departmentId", 2);
+                intent.putExtra("contactId", lstContact.get(lstContact.size() - 1).getId());
+
                 break;
             case R.id.btn_03:
                 forToast = depName = dep[2];
                 lstContact.clear();
+                setDepId(3);
                 lstContact = departDataBase.departmentDao().getContactsList(3);
+//                intent.putExtra("departmentId", 3);
+                intent.putExtra("contactId", lstContact.get(lstContact.size() - 1).getId());
+
                 break;
             case R.id.btn_04:
                 forToast = depName = dep[3];
                 lstContact.clear();
+                setDepId(4);
                 lstContact = departDataBase.departmentDao().getContactsList(4);
+//                intent.putExtra("departmentId", 4);
+                intent.putExtra("contactId", lstContact.get(lstContact.size() - 1).getId());
+
                 break;
             case R.id.btn_05:
                 forToast = depName = dep[4];
                 lstContact.clear();
+                setDepId(5);
                 lstContact = departDataBase.departmentDao().getContactsList(5);
+//                intent.putExtra("departmentId", 5);
+                intent.putExtra("contactId", lstContact.get(lstContact.size() - 1).getId());
+
                 break;
         }
-//        Intent intent = new Intent(getApplicationContext(), OpenContact.class);
         Toast.makeText(getApplicationContext(),
                 forToast,
                 Toast.LENGTH_SHORT)

@@ -14,6 +14,16 @@ import java.util.regex.Pattern;
 public class ListWork {
     public static boolean resolution = false;
     public  static String dialogTtl = "", textToDialog="";
+    public static int depId;
+
+    public static int getDepId() {
+        return depId;
+    }
+
+    public static void setDepId(int depId) {
+        ListWork.depId = depId;
+    }
+
 
 
     public static boolean getResolution(){
