@@ -17,6 +17,7 @@ import utils.DialogEditMember;
 
 import static com.departlistv3.MainActivity.departDataBase;
 import static com.departlistv3.MainActivity.lstContact;
+import static com.departlistv3.OpenContact.searchView;
 import static utils.ListWork.*;
 
 public class EditMember extends AddMember implements DialogEditMember.NoticeDialogListener {
@@ -72,6 +73,8 @@ public class EditMember extends AddMember implements DialogEditMember.NoticeDial
                             R.string.toast_editM,
                             Toast.LENGTH_SHORT)
                             .show();
+                    searchView.setQuery("", false);
+                    searchView.clearFocus();
                     lstContact = departDataBase.departmentDao().getContactsList(getDepId());
                     FragmentContact.recycleViewAdapter.setmData(lstContact);
                     finish();

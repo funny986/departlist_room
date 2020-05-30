@@ -15,6 +15,7 @@ import dataBases.Contacts;
 
 import static com.departlistv3.MainActivity.departDataBase;
 import static com.departlistv3.MainActivity.lstContact;
+import static com.departlistv3.OpenContact.searchView;
 import static utils.ListWork.getDepId;
 
 public class DelFromContext extends DialogFragment {
@@ -42,7 +43,8 @@ public class DelFromContext extends DialogFragment {
                         departDataBase.contactsDao().delete(contactsDelete);
                         lstContact =  departDataBase.departmentDao().getContactsList(getDepId());
                         FragmentContact.recycleViewAdapter.setmData(lstContact);
-
+                        searchView.setQuery("", false);
+                        searchView.clearFocus();
                         Activity activity = getActivity();
                         Toast.makeText(activity,
                                 R.string.toast_delCont,

@@ -1,5 +1,6 @@
 package com.departlistv3;
 
+import android.annotation.SuppressLint;
 import android.view.*;
 import android.widget.*;
 import androidx.annotation.NonNull;
@@ -20,18 +21,15 @@ import static com.departlistv3.MainActivity.*;
 
 public class OpenContact extends AppCompatActivity {
 
+    @SuppressLint("StaticFieldLeak")
+    public static SearchView searchView;
     public ArrayList<Contacts> searchList = new ArrayList<>();
-
-    private SearchView searchView;
 
     @Override
     public void onSaveInstanceState(Bundle outSt) {
         super.onSaveInstanceState(outSt);
     }
 
-    protected void onDestroy() {
-        super.onDestroy();
-    }
     Intent editmemder;
 
     public boolean onContextItemSelected(@NonNull MenuItem item) {
