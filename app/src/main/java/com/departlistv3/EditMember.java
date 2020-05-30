@@ -1,8 +1,6 @@
 package com.departlistv3;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -17,7 +15,6 @@ import androidx.fragment.app.FragmentManager;
 import dataBases.Contacts;
 import utils.DialogEditMember;
 
-import static com.departlistv3.MainActivity.depName;
 import static com.departlistv3.MainActivity.departDataBase;
 import static utils.ListWork.*;
 
@@ -25,8 +22,8 @@ public class EditMember extends AddMember implements DialogEditMember.NoticeDial
 
     private  EditText firstNameEdit, lastNameEdit, positionNameEdit,
                             middleNameEdit, phoneNameEdit;
-    private Intent intent = new Intent();
     private int editId;
+    private Contacts contacts;
 
 
     public void setEditId(int editId) {
@@ -61,19 +58,22 @@ public class EditMember extends AddMember implements DialogEditMember.NoticeDial
                         phoneNameEdit.getText().toString());
                 if (!getResolution()) this.onRestart();
                 else {
+                    Intent intent = new Intent();
                     Contacts contactsEdit = new Contacts(
-                            getIntent().getIntExtra("contantId", 1000),
+                            editId,
                             getDepId(),
                             lastNameEdit.getText().toString(),
                             firstNameEdit.getText().toString(),
                             middleNameEdit.getText().toString(),
                             positionNameEdit.getText().toString(),
                             phoneNameEdit.getText().toString());
+
                     departDataBase.contactsDao().update(contactsEdit);
                     Toast.makeText(getApplicationContext(),
                             R.string.toast_editM,
                             Toast.LENGTH_SHORT)
                             .show();
+                    setResult(RESULT_OK, intent);
                     finish();
                 }
                 return true;
@@ -93,7 +93,7 @@ public class EditMember extends AddMember implements DialogEditMember.NoticeDial
         positionNameEdit = findViewById(R.id.position_name);
 
         boolean con = getIntent().getBooleanExtra("contex", false);
-        setEditId(getIntent().getIntExtra("id", 0));
+        setEditId(getIntent().getIntExtra("id", 10000));
 
         if (!con) {
             FragmentManager fragmentManager = getSupportFragmentManager();
@@ -102,11 +102,12 @@ public class EditMember extends AddMember implements DialogEditMember.NoticeDial
             dialogEditMember.show(fragmentManager, "Edit");
         }
         else {
-            lastNameEdit.setText(getIntent().getStringExtra("lastname"));
-            firstNameEdit.setText(getIntent().getStringExtra("firstname"));
-            middleNameEdit.setText(getIntent().getStringExtra("middlename"));
-            positionNameEdit.setText(getIntent().getStringExtra("position"));
-            phoneNameEdit.setText(getIntent().getStringExtra("phone"));
+            contacts = departDataBase.contactsDao().getContactsList(editId);
+            lastNameEdit.setText(contacts.getLastName());
+            firstNameEdit.setText(contacts.getFirstName());
+            middleNameEdit.setText(contacts.getMiddleName());
+            positionNameEdit.setText(contacts.getPositionName());
+            phoneNameEdit.setText(contacts.getPhone());
         }
     }
 }

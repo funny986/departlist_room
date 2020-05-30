@@ -39,7 +39,6 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
         searchView.setQuery("", false);
-//        createNewList();
 //        recycleViewAdapter.notifyDataSetChanged();
 //        FragmentContact.recycleViewAdapter = new RecycleViewAdapter(getApplicationContext(), lstContact);
 //        FragmentContact.mrecycle.setAdapter(FragmentContact.recycleViewAdapter);
@@ -47,7 +46,6 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
 
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
-//        createNewList();
     }
 
 
@@ -59,22 +57,12 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
             case R.id.edit_context:
                 if (!searchList.isEmpty()) {
                     editmemder.putExtra("contex", true);
-//                    editmemder.putExtra("lastname", searchList.get(pos).getLastName());
-//                    editmemder.putExtra("firstname", searchList.get(pos).getFirstName());
-//                    editmemder.putExtra("middlename", searchList.get(pos).getMiddleName());
-//                    editmemder.putExtra("position", searchList.get(pos).getPositionName());
-//                    editmemder.putExtra("phone", searchList.get(pos).getPhone());
                     editmemder.putExtra("id", searchList.get(pos).getId());
                     startActivity(editmemder);
                 } else {
                     editmemder.putExtra("contex", true);
-//                    editmemder.putExtra("lastname", lstContact.get(pos).getLastName());
-//                    editmemder.putExtra("firstname", lstContact.get(pos).getFirstName());
-//                    editmemder.putExtra("middlename", lstContact.get(pos).getMiddleName());
-//                    editmemder.putExtra("position", lstContact.get(pos).getPositionName());
-//                    editmemder.putExtra("phone", lstContact.get(pos).getPhone());
                     editmemder.putExtra("id", lstContact.get(pos).getId());
-                    startActivity(editmemder);
+                    startActivityForResult(editmemder, 1);
                 }
                 break;
             case R.id.delete_context:
@@ -86,7 +74,7 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
                             searchList.get(pos).getMiddleName();
                 } else {
                     id = lstContact.get(pos).getId();
-                    name = " \n" + lstContact.get(pos).getLastName() + " " +
+                    name = " \n\n" + lstContact.get(pos).getLastName() + " " +
                             lstContact.get(pos).getFirstName() + " " +
                             lstContact.get(pos).getMiddleName();
                 }
@@ -120,8 +108,8 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
                     }
                 }
                 searchList = tempString;
-//                FragmentContact.recycleViewAdapter = new RecycleViewAdapter(getApplicationContext(), searchList);
-//                FragmentContact.mrecycle.setAdapter(FragmentContact.recycleViewAdapter);
+                FragmentContact.recycleViewAdapter = new RecycleViewAdapter(getApplicationContext(), searchList);
+                FragmentContact.mrecycle.setAdapter(FragmentContact.recycleViewAdapter);
                 return true;
             }
         });
@@ -133,10 +121,10 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             switch (requestCode){
-                case 1:
+                case 1://edit
 
                 break;
-                case 2:
+                case 2://add
 //                    createNewList();
 //                    recycleViewAdapter.notifyDataSetChanged();
 //                    FragmentManager fm = getSupportFragmentManager();
@@ -152,8 +140,7 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
         switch (item.getItemId()) {
             case R.id.anew_member:
                 Intent addmemder = new Intent(this, AddMember.class);
-//                startActivity(addmemder);
-                startActivityForResult(addmemder, 1);
+                startActivityForResult(addmemder, 2);
                 return true;
             case R.id.del_member:
                 DialogDelMember dialogDelMember = new DialogDelMember();
@@ -161,8 +148,7 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
                 return true;
             case R.id.edit_member:
                 editmemder = new Intent(this, EditMember.class);
-                startActivity(editmemder);
-//                startActivityForResult(editmemder, 2);
+                startActivityForResult(editmemder, 1);
                 return true;
             case R.id.closing_app:
                 finishAffinity();

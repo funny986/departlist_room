@@ -11,6 +11,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import com.departlistv3.R;
+import dataBases.Contacts;
+
+import static com.departlistv3.MainActivity.departDataBase;
 
 public class DelFromContext extends DialogFragment {
     private int id_del;
@@ -50,9 +53,8 @@ public class DelFromContext extends DialogFragment {
                 .setPositiveButton("Удалить", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-//                        database.delete(getTABLENAME(), DatabaseHelper.KEY_ID + "=" +
-//                                        id_del,
-//                                null);
+                        Contacts contactsDelete = departDataBase.contactsDao().getContactsList(id_del);
+                        departDataBase.contactsDao().delete(contactsDelete);
                         Activity activity = getActivity();
                         Toast.makeText(activity,
                                 R.string.toast_delCont,

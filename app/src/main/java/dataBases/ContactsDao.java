@@ -5,8 +5,8 @@ import androidx.room.*;
 @Dao
 public interface ContactsDao {
 
-//    @Query("SELECT * FROM contacts WHERE department_id = :departmentID")
-//    ArrayList<Contact> getContactsList(int departmentID);
+    @Query("SELECT * FROM contacts WHERE id = :id")
+    Contacts getContactsList(int id);
 
     @Query("SELECT * FROM contacts WHERE last_name = :lastName")
     Contacts getLastName(String lastName);
@@ -31,12 +31,6 @@ public interface ContactsDao {
 
     @Delete
     void delete(Contacts contacts);
-
-//    @Update
-//    void update(int id);
-//
-//    @Delete
-//    void delete(Contacts contacts);
 
 
 }

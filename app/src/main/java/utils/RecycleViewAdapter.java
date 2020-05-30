@@ -15,7 +15,6 @@ import dataBases.Contacts;
 
 import java.util.List;
 
-import static com.departlistv3.MainActivity.lstContact;
 import static utils.ListWork.inputNumberPhoneMask;
 
 public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.MyViewHolder> {
@@ -52,13 +51,12 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                     dialog_firstname_tv.setText(mData.get(myViewHolder.getAdapterPosition()).getFirstName()
                      + "  " +  mData.get(myViewHolder.getAdapterPosition()).getMiddleName());
                     dialog_position_tv.setText(mData.get(myViewHolder.getAdapterPosition()).getPositionName());
-                    dialog_phone_tv.setText(lstContact.get(myViewHolder.getAdapterPosition()).getPhone());
+                    dialog_phone_tv.setText(mData.get(myViewHolder.getAdapterPosition()).getPhone());
                     Toast.makeText(mContext, "" + mData.get(myViewHolder.getAdapterPosition()).getLastName(),
                             Toast.LENGTH_SHORT)
                             .show();
                     myDialog.show();
 
-//                    final String dial = "tel:" + dialog_phone_tv.getText();
                     Button phone = myDialog.findViewById(R.id.dialog_button_name);
                     phone.setOnClickListener(new View.OnClickListener() {
                         @Override

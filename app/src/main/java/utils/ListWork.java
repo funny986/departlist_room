@@ -24,8 +24,6 @@ public class ListWork {
         ListWork.depId = depId;
     }
 
-
-
     public static boolean getResolution(){
         return resolution;
     }
