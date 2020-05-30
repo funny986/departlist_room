@@ -1,7 +1,6 @@
 package com.departlistv3;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,8 +17,6 @@ import java.util.ArrayList;
 
 import dataBases.Contacts;
 import utils.DialogAddMember;
-
-import javax.xml.transform.Result;
 
 import static com.departlistv3.MainActivity.*;
 import static utils.ListWork.*;
@@ -117,7 +114,6 @@ public class AddMember extends AppCompatActivity {
                     this.finish();
                     return true;
                 case R.id.check_mark:
-
                     setDataNewMember(lastNameNew.getText().toString(),
                             firstNameNew.getText().toString(),
                             middleNameNew.getText().toString(),
@@ -125,7 +121,6 @@ public class AddMember extends AppCompatActivity {
                             phoneNameNew.getText().toString());
                     if (!getResolution()) this.onRestart();
                     else {
-                        Intent intent = new Intent();
                         Contacts contactsNew = new Contacts(getLastID() + 1,
                                 getDepId(),
                                 lastNameNew.getText().toString(),
@@ -140,7 +135,7 @@ public class AddMember extends AppCompatActivity {
                                 R.string.toast_addM2,
                                 Toast.LENGTH_SHORT)
                                 .show();
-                        setResult(RESULT_OK, intent);
+                        FragmentContact.recycleViewAdapter.setmData(lstContact);
                         finish();
                     }
                     return true;

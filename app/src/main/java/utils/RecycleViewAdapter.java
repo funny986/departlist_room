@@ -20,13 +20,17 @@ import static utils.ListWork.inputNumberPhoneMask;
 public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.MyViewHolder> {
 
     Context mContext;
-    List<Contacts> mData;
+    public List<Contacts> mData;
     Dialog myDialog;
+
+    public void setmData(List<Contacts> Data) {
+        this.mData = Data;
+        notifyDataSetChanged();
+    }
 
     public RecycleViewAdapter(Context context, List<Contacts> mData) {
         this.mContext = context;
         this.mData = mData;
-        notifyDataSetChanged();
 
     }
         @NonNull

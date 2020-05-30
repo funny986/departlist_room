@@ -16,6 +16,7 @@ import dataBases.Contacts;
 import utils.DialogEditMember;
 
 import static com.departlistv3.MainActivity.departDataBase;
+import static com.departlistv3.MainActivity.lstContact;
 import static utils.ListWork.*;
 
 public class EditMember extends AddMember implements DialogEditMember.NoticeDialogListener {
@@ -23,8 +24,6 @@ public class EditMember extends AddMember implements DialogEditMember.NoticeDial
     private  EditText firstNameEdit, lastNameEdit, positionNameEdit,
                             middleNameEdit, phoneNameEdit;
     private int editId;
-    private Contacts contacts;
-
 
     public void setEditId(int editId) {
         this.editId = editId;
@@ -58,7 +57,6 @@ public class EditMember extends AddMember implements DialogEditMember.NoticeDial
                         phoneNameEdit.getText().toString());
                 if (!getResolution()) this.onRestart();
                 else {
-                    Intent intent = new Intent();
                     Contacts contactsEdit = new Contacts(
                             editId,
                             getDepId(),
@@ -69,11 +67,13 @@ public class EditMember extends AddMember implements DialogEditMember.NoticeDial
                             phoneNameEdit.getText().toString());
 
                     departDataBase.contactsDao().update(contactsEdit);
+
                     Toast.makeText(getApplicationContext(),
                             R.string.toast_editM,
                             Toast.LENGTH_SHORT)
                             .show();
-                    setResult(RESULT_OK, intent);
+                    lstContact = departDataBase.departmentDao().getContactsList(getDepId());
+                    FragmentContact.recycleViewAdapter.setmData(lstContact);
                     finish();
                 }
                 return true;
@@ -102,7 +102,7 @@ public class EditMember extends AddMember implements DialogEditMember.NoticeDial
             dialogEditMember.show(fragmentManager, "Edit");
         }
         else {
-            contacts = departDataBase.contactsDao().getContactsList(editId);
+            Contacts contacts = departDataBase.contactsDao().getContactsList(editId);
             lastNameEdit.setText(contacts.getLastName());
             firstNameEdit.setText(contacts.getFirstName());
             middleNameEdit.setText(contacts.getMiddleName());

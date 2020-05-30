@@ -5,7 +5,6 @@ import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.*;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,12 +18,10 @@ import utils.*;
 import static com.departlistv3.MainActivity.*;
 
 
-public class OpenContact extends AppCompatActivity implements DialogDelMember.NoticeDialogListener,
-        DelFromContext.NoticeDialogListener {
-
-    private Intent editmemder;
+public class OpenContact extends AppCompatActivity {
 
     public ArrayList<Contacts> searchList = new ArrayList<>();
+
     private SearchView searchView;
 
     @Override
@@ -35,19 +32,7 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
     protected void onDestroy() {
         super.onDestroy();
     }
-
-    @Override
-    public void onDialogPositiveClick(DialogFragment dialog) {
-        searchView.setQuery("", false);
-//        recycleViewAdapter.notifyDataSetChanged();
-//        FragmentContact.recycleViewAdapter = new RecycleViewAdapter(getApplicationContext(), lstContact);
-//        FragmentContact.mrecycle.setAdapter(FragmentContact.recycleViewAdapter);
-    }
-
-    @Override
-    public void onDialogNegativeClick(DialogFragment dialog) {
-    }
-
+    Intent editmemder;
 
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         String name;
@@ -62,7 +47,7 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
                 } else {
                     editmemder.putExtra("contex", true);
                     editmemder.putExtra("id", lstContact.get(pos).getId());
-                    startActivityForResult(editmemder, 1);
+                    startActivity(editmemder);
                 }
                 break;
             case R.id.delete_context:
@@ -108,8 +93,7 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
                     }
                 }
                 searchList = tempString;
-                FragmentContact.recycleViewAdapter = new RecycleViewAdapter(getApplicationContext(), searchList);
-                FragmentContact.mrecycle.setAdapter(FragmentContact.recycleViewAdapter);
+                FragmentContact.recycleViewAdapter.setmData(searchList);
                 return true;
             }
         });
@@ -117,30 +101,11 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
     } //optionMenu
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            switch (requestCode){
-                case 1://edit
-
-                break;
-                case 2://add
-//                    createNewList();
-//                    recycleViewAdapter.notifyDataSetChanged();
-//                    FragmentManager fm = getSupportFragmentManager();
-//                          fm.beginTransaction()
-//                            .replace(R.id.container, new FragmentContact())
-//                            .commit();
-            break;}
-        }
-    }
-
-    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.anew_member:
                 Intent addmemder = new Intent(this, AddMember.class);
-                startActivityForResult(addmemder, 2);
+                startActivity(addmemder);
                 return true;
             case R.id.del_member:
                 DialogDelMember dialogDelMember = new DialogDelMember();
@@ -148,7 +113,7 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
                 return true;
             case R.id.edit_member:
                 editmemder = new Intent(this, EditMember.class);
-                startActivityForResult(editmemder, 1);
+                startActivity(editmemder);
                 return true;
             case R.id.closing_app:
                 finishAffinity();
@@ -160,7 +125,6 @@ public class OpenContact extends AppCompatActivity implements DialogDelMember.No
                 return super.onOptionsItemSelected(item);
         }
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

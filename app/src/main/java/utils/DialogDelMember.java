@@ -10,33 +10,18 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
-import com.departlistv3.R;
+ import com.departlistv3.FragmentContact;
+ import com.departlistv3.R;
  import dataBases.Contacts;
 
  import static com.departlistv3.MainActivity.departDataBase;
  import static com.departlistv3.MainActivity.lstContact;
+ import static utils.ListWork.getDepId;
 
 public class DialogDelMember extends DialogFragment {
 
     private String choiseDeleting = "";
     private int id_del;
-    private NoticeDialogListener mListener;
-
-    public interface NoticeDialogListener {
-         void onDialogPositiveClick(DialogFragment dialog);
-         void onDialogNegativeClick(DialogFragment dialog);
-    }
-    @SuppressWarnings("deprecation")
-    @Override
-    public void onAttach(@NonNull Activity activity) {
-        super.onAttach(activity);
-        try {
-            mListener = (NoticeDialogListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement NoticeDialogListener");
-        }
-    }
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
@@ -65,13 +50,14 @@ public class DialogDelMember extends DialogFragment {
                                 choiseDeleting + getString(R.string.toast_delDialog),
                                 Toast.LENGTH_SHORT)
                                 .show();
-                        mListener.onDialogPositiveClick(DialogDelMember.this);
+                        lstContact = departDataBase.departmentDao().getContactsList(getDepId());
+                        FragmentContact.recycleViewAdapter.setmData(lstContact);
+
                     }
                 })
                 .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        mListener.onDialogNegativeClick(DialogDelMember.this);
                     }
                 });
         return builder.create();

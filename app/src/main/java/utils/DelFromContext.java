@@ -4,16 +4,18 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
+import com.departlistv3.FragmentContact;
 import com.departlistv3.R;
 import dataBases.Contacts;
 
 import static com.departlistv3.MainActivity.departDataBase;
+import static com.departlistv3.MainActivity.lstContact;
+import static utils.ListWork.getDepId;
 
 public class DelFromContext extends DialogFragment {
     private int id_del;
@@ -23,24 +25,6 @@ public class DelFromContext extends DialogFragment {
         this.id_del = id_del;
         this.message = "Удалить контакт: " + message +
                 "\nокончательно?";
-    }
-
-    private DelFromContext.NoticeDialogListener mListener;
-
-    public interface NoticeDialogListener {
-        void onDialogPositiveClick(DialogFragment dialog);
-        void onDialogNegativeClick(DialogFragment dialog);
-    }
-    @SuppressWarnings("deprecation")
-    @Override
-    public void onAttach(@NonNull Activity activity) {
-        super.onAttach(activity);
-        try {
-            mListener = (DelFromContext.NoticeDialogListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement NoticeDialogListener");
-        }
     }
     @NonNull
     @Override
@@ -54,19 +38,21 @@ public class DelFromContext extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Contacts contactsDelete = departDataBase.contactsDao().getContactsList(id_del);
+
                         departDataBase.contactsDao().delete(contactsDelete);
+                        lstContact =  departDataBase.departmentDao().getContactsList(getDepId());
+                        FragmentContact.recycleViewAdapter.setmData(lstContact);
+
                         Activity activity = getActivity();
                         Toast.makeText(activity,
                                 R.string.toast_delCont,
                                 Toast.LENGTH_SHORT)
                                 .show();
-                        mListener.onDialogPositiveClick(DelFromContext.this);
                     }
                 })
                 .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        mListener.onDialogNegativeClick(DelFromContext.this);
                     }
                 });
         return builder.create();
