@@ -88,8 +88,6 @@ public class ListWork {
         ListWork.lastID = lastID;
     }
 
-
-
     public static void setDataContactList(@NonNull DepartDataBase dataBase, @NonNull String[] list){
 
         Department department1 = new Department(1, list[0]);

@@ -64,7 +64,6 @@ public class DialogEditMember extends DialogFragment {
                                 Toast.LENGTH_SHORT)
                                 .show();
                         mListener.onDialogPositiveClick(DialogEditMember.this, lstContact.get(took_id[0]));
-
                     }
                 })
                 .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {

@@ -66,7 +66,6 @@ public class EditMember extends AddMember implements DialogEditMember.NoticeDial
                             middleNameEdit.getText().toString(),
                             positionNameEdit.getText().toString(),
                             phoneNameEdit.getText().toString());
-
                     departDataBase.contactsDao().update(contactsEdit);
 
                     Toast.makeText(getApplicationContext(),

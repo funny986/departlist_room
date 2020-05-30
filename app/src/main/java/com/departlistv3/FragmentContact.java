@@ -14,7 +14,6 @@ import static com.departlistv3.MainActivity.lstContact;
 
 public class FragmentContact extends Fragment {
     View v;
-
     public static RecyclerView mrecycle;
 
     public FragmentContact() {

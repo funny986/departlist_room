@@ -59,5 +59,4 @@ public class DelFromContext extends DialogFragment {
                 });
         return builder.create();
     }
-
 }

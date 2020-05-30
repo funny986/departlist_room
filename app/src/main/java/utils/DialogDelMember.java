@@ -1,6 +1,5 @@
 package utils;
 
- import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -52,7 +51,6 @@ public class DialogDelMember extends DialogFragment {
                                 .show();
                         lstContact = departDataBase.departmentDao().getContactsList(getDepId());
                         FragmentContact.recycleViewAdapter.setmData(lstContact);
-
                     }
                 })
                 .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {

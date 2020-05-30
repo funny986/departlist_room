@@ -134,7 +134,6 @@ public class OpenContact extends AppCompatActivity {
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setElevation(0);
-
         TabLayout tableLayout = findViewById(R.id.tablayout_id);
         ViewPager viewPager = findViewById(R.id.viewpager_id);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);

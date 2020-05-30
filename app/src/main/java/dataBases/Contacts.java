@@ -14,7 +14,6 @@ import androidx.room.PrimaryKey;
             ))
 public class Contacts {
 
-
     public Contacts(int id, int departmentID, String lastName, String firstName, String middleName, String positionName,
                     String phone){
         this.id = id;

@@ -22,6 +22,7 @@ import static com.departlistv3.MainActivity.*;
 import static utils.ListWork.*;
 
 public class AddMember extends AppCompatActivity {
+
     private EditText firstNameNew, lastNameNew, positionNameNew, middleNameNew, phoneNameNew;
     public static    String fnn, lnn, mnn, pnn, phnn;
     public static ArrayList<Boolean> readyToAdd = new ArrayList<>();
@@ -87,7 +88,7 @@ public class AddMember extends AppCompatActivity {
         return  true;
     }
 
-    public void setDataNewMember(String lnn, String fnn, String mnn, String pnn, String phnn){
+    public void setDataNewMember(String lnn, String fnn, String mnn, @NonNull String pnn, String phnn){
         AddMember.lnn = lnn;
         AddMember.fnn = fnn;
         AddMember.mnn = mnn;

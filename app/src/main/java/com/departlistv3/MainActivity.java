@@ -118,7 +118,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public static DepartDataBase departDataBase;
-
     private Resources resources;
 
     @Override
