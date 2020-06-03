@@ -4,8 +4,8 @@ import android.annotation.SuppressLint;
 import android.view.*;
 import android.widget.*;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -52,7 +52,7 @@ public class OpenContact extends AppCompatActivity {
                 int id;
                 if (!searchList.isEmpty()) {
                     id = searchList.get(pos).getId();
-                    name = " \n" + searchList.get(pos).getLastName() + " " +
+                    name = " \n\n" + searchList.get(pos).getLastName() + " " +
                             searchList.get(pos).getFirstName() + " " +
                             searchList.get(pos).getMiddleName();
                 } else {
@@ -123,24 +123,24 @@ public class OpenContact extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_contact);
-        setTitle(depName);
-        ActionBar actionBar = getSupportActionBar();
-        assert actionBar != null;
-        actionBar.setHomeButtonEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setElevation(0);
+        Toolbar toolbar = findViewById(R.id.toolbar_action);
+        setSupportActionBar(toolbar);
+        TextView textView = toolbar.findViewById(R.id.title_toolbar);
+        textView.setText(depName);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.ic_overflow));
+
         TabLayout tableLayout = findViewById(R.id.tablayout_id);
-        ViewPager viewPager = findViewById(R.id.viewpager_id);
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
-        adapter.AddFragment(new FragmentContact(), "Контакты");
-        adapter.AddFragment(new FragmentFav(), "Информация");
-        viewPager.setAdapter(adapter);
-        tableLayout.setupWithViewPager(viewPager);
+            ViewPager viewPager = findViewById(R.id.viewpager_id);
+            ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
+            adapter.AddFragment(new FragmentContact(), "Контакты");
+            adapter.AddFragment(new FragmentFav(), "Информация");
+            viewPager.setAdapter(adapter);
+            tableLayout.setupWithViewPager(viewPager);
     }
 }
 

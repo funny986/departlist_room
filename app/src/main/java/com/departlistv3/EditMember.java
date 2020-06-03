@@ -1,22 +1,22 @@
 package com.departlistv3;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
 import dataBases.Contacts;
 import utils.DialogEditMember;
 
-import static com.departlistv3.MainActivity.departDataBase;
-import static com.departlistv3.MainActivity.lstContact;
+import static com.departlistv3.MainActivity.*;
 import static com.departlistv3.OpenContact.searchView;
 import static utils.ListWork.*;
 
@@ -87,12 +87,17 @@ public class EditMember extends AddMember implements DialogEditMember.NoticeDial
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_member);
-        lastNameEdit = findViewById(R.id.last_name);
-        firstNameEdit = findViewById(R.id.first_name);
-        middleNameEdit = findViewById(R.id.middle_name);
-        phoneNameEdit = findViewById(R.id.phone_number);
-        inputNumberPhoneMask(phoneNameEdit);
-        positionNameEdit = findViewById(R.id.position_name);
+        Toolbar toolbar = findViewById(R.id.toolbar_action);
+        setSupportActionBar(toolbar);
+        TextView textView = toolbar.findViewById(R.id.title_toolbar);
+        textView.setText(getResources().getString(R.string.data_edit));
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+            lastNameEdit = findViewById(R.id.last_name);
+            firstNameEdit = findViewById(R.id.first_name);
+            middleNameEdit = findViewById(R.id.middle_name);
+            phoneNameEdit = findViewById(R.id.phone_number);
+            inputNumberPhoneMask(phoneNameEdit);
+            positionNameEdit = findViewById(R.id.position_name);
 
         boolean con = getIntent().getBooleanExtra("contex", false);
         setEditId(getIntent().getIntExtra("id", 10000));

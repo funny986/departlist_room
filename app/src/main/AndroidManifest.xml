@@ -17,7 +17,8 @@
             android:theme="@style/AppTheme"
             android:name="dataBases.App"
     >
-        <activity android:name=".OpenContact">
+        <activity android:name=".OpenContact"
+       >
         </activity>
         <activity android:name=".EditMember"/>
         <activity android:name=".MainActivity">
@@ -28,7 +29,7 @@
         </activity>
         <activity
                 android:name=".AddMember"
-                android:label="@string/data_newmember"/>
+                />
     </application>
 
 </manifest>
