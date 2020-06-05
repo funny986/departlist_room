@@ -7,11 +7,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ public class AddMember extends AppCompatActivity {
         dialogAddMember.setCancelable(false);
         dialogAddMember.show(getSupportFragmentManager(), "dialogerror");
     }
-    private boolean checkFlags(ArrayList<Boolean> forcheck){
+    private boolean checkFlags(@NonNull ArrayList<Boolean> forcheck){
         for (int z = 0; z < forcheck.size(); z++){
             if (!forcheck.get(z)){
                 switch (z){
@@ -150,9 +151,11 @@ public class AddMember extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_member);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeButtonEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+            Toolbar toolbar = findViewById(R.id.toolbar_action);
+            setSupportActionBar(toolbar);
+            TextView textView = toolbar.findViewById(R.id.title_toolbar);
+            textView.setText(getResources().getString(R.string.data_newmember));
+            toolbar.setNavigationIcon(R.drawable.ic_back);
         setFalse(readyToAdd, getResources().getInteger(R.integer.length_editor));
         lastNameNew = findViewById(R.id.last_name);
         firstNameNew = findViewById(R.id.first_name);

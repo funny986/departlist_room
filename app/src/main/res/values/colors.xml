@@ -1,15 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#393939</color>
-    <color name="colorPrimaryDark">#2f2f2f</color>
-   <color name="colorAccent">#52b7f8</color>
 
-    <color name="backgroundfragment">#2b2b2b</color>
-    <color name="borderLow">#999</color>
-    <color name="borderHigh">#DDD</color>
+    <color name="colorPrimary">@color/colorGrey</color>
+    <color name="colorPrimaryDark">@color/colorVirbant</color>
+    <color name="colorAccent">@color/colorGreyLight</color>
 
-    <color name="gradientStart">#DDD</color>
-    <color name="gradientEnd">#BBB</color>
-    <color name="text">@android:color/black</color>
-    <color name="shadow">#FFFFFF</color>
+    <color name="backgroundTool">#F1773A</color>
+    <color name="backgroundMenu">#555555</color>
+    <color name="backgroundfragment">@color/colorPrimary</color>
+    <color name="backgroundIcon">@color/colorGreyLight</color>
+    <color name="backgroundButton">#F47F5A</color>
+    <color name="backgroundButtonText">@color/colorGreyLight</color>
+
+    <color name="editTextColor">@color/colorAccent</color>
+    <color name="textFragment">@color/colorLight</color>
+    <color name="textAccent">@color/colorDarkAccent</color>
+    <color name="textToolTitle">#F3FDF6EF</color>
+
+    <color name="colorWhiteAccent">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorVirbant">#555555</color>
+    <color name="colorVirbantDark">#4A3838</color>
+
+    <color name="colorGrey">#bbaa99</color>
+    <color name="colorGreyLight">#FAF8F6</color>
+
+    <color name="colorDarkOrange">#ee6622</color>
+    <color name="colorLightOrange">#ffcc33</color>
+    <color name="colorLight">#ffff00</color>
+    <color name="colorDarkAccent">#000000</color>
+
+    <color name="borderLow">#bbaa99</color>
+    <color name="borderHigh">#faf8f6</color>
+    <color name="gradientStart">#faf8f6</color>
+    <color name="gradientEnd">#bbaa99</color>
+    <color name="shadow">#555555</color>
 </resources>

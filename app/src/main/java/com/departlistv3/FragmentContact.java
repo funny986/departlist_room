@@ -33,6 +33,7 @@ public class FragmentContact extends Fragment {
         registerForContextMenu(mrecycle);
         return v;
     }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
