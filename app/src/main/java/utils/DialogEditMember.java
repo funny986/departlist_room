@@ -4,20 +4,13 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.ContextThemeWrapper;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import com.departlistv3.R;
 import dataBases.Contacts;
-
-import java.util.Objects;
 
 import static com.departlistv3.MainActivity.lstContact;
 
@@ -45,7 +38,8 @@ public class DialogEditMember extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
-        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getContext(), R.style.CustomAlert));
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
         final String[] choiseForEdit = new String[lstContact.size()];
         final int[] took_id = new int[1];
         for (int r =0; r < lstContact.size(); r++ ) {

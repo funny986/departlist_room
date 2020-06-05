@@ -8,28 +8,23 @@
         tools:context=".OpenContact"
         android:id="@+id/container"
         android:orientation="vertical"
-        android:background="@color/colorPrimary">
-
-    <include layout="@layout/tool_bar_main"
-             android:id="@+id/toolbar_action"
-             app:layout_constraintTop_toTopOf="parent"
-             app:layout_constraintBottom_toBottomOf="parent"/>
-
+>
     <com.google.android.material.tabs.TabLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorLightOrange"
+            android:background="@color/colorPrimary"
             app:tabMode="fixed"
             app:tabGravity="fill"
-            app:tabTextColor="@color/colorDarkOrange"
-            app:tabIndicatorColor="@color/colorDarkOrange"
-            android:id="@+id/tablayout_id">
+            app:tabTextColor="@color/colorAccent"
+            app:tabIndicatorColor="@color/colorAccent"
+            android:id="@+id/tablayout_id"
+    >
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/viewpager_id"/>
-
+android:id="@+id/viewpager_id"
+    />
         </LinearLayout>
 <!--</LinearLayout>-->
