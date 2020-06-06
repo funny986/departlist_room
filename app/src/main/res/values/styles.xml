@@ -1,13 +1,51 @@
 <resources>
-
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <!--        <item name="colorAccent">#06D5C0</item>-->
 
+        <item name="android:theme">@style/Theme.CustomTheme</item>
+
+    </style>
+
+<!--    Custom theme-->
+
+    <style name="Theme.CustomTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:dropDownListViewStyle">@style/MyDropDownListView</item>
+        <item name="actionOverflowButtonStyle">@style/OverFlow</item>
+        <item name="android:itemTextAppearance">@style/MyActionBar.MenuTextStyle</item>
+        <item name="android:itemBackground">@drawable/btn_round</item>
+    </style>
+
+    <!-- The beef: background color for Action Bar overflow menu -->
+    <style name="MyPopupMenu" parent="android:Widget.Holo.ListPopupWindow">
+        <item name="android:popupBackground">@color/colorAccent</item>
+    </style>
+
+    <style name="MyActionBar.MenuTextStyle"  parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="MyDropDownListView" parent="android:style/Widget.Holo.ListView.DropDown">
+        <item name="android:listSelector">@drawable/btn_round</item>
+        <item name="android:divider">@color/colorAccent</item>
+        <item name="android:dividerHeight">1sp</item>
+   </style>
+
+    <style name="MyToolBar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark</item>
+        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="android:textColorSecondary">@color/colorAccent</item>
+
+    </style>
+
+    <style name="OverFlow" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_overflow</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -15,13 +53,56 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"
+    />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-    
-    <style name="CustomAlert" parent="Theme.AppCompat.DayNight.Dialog.Alert">
-<!--        <item name="colorAccent">#201432</item>-->
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"
+    />
+
+    <style name="MyAlertDialogTheme">
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+        <item name="android:windowIsFloating">true</item>
+         <item name="android:windowFrame">@null</item>
+         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowTitleStyle">@style/DialogWindowTitle</item>
+        <item name="buttonBarButtonStyle">@style/CustomAlert.ButtonStyle</item>
+
+
     </style>
+
+    <style name="DialogWindowTitle" parent="MaterialAlertDialog.MaterialComponents.Title.Text.CenterStacked">
+        <item name="android:textColor">@color/textFragment</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">15dp</item>
+    </style>
+
+    <style name="CustomAlert" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="theme">@style/MyAlertDialogTheme</item>
+        <item name="android:textSize">18sp</item>
+    <item name="android:topDark">@color/backgroundButton</item>
+        <item name="android:fullDark">@color/backgroundButton</item>
+        <item name="android:fullBright">@color/backgroundButton</item>
+
+        <item name="android:centerMedium">@color/backgroundfragment</item>
+        <item name="android:centerDark">@color/backgroundfragment</item>
+        <item name="android:centerBright">@color/backgroundfragment</item>
+
+        <item name="android:bottomDark">@color/colorVirbantDark</item>
+        <item name="android:bottomBright">@color/textAccent</item>
+        <item name="android:bottomMedium">@color/backgroundButton</item>
+
+    </style>
+<style name="CustomAlert.ButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+    <item name="background">@drawable/btn_round</item>
+    <item name="android:textColor">@color/textFragment</item>
+    <item name="android:gravity">center</item>
+</style>
 
     <style name="title_style">
         <item name="android:textSize">18dp</item>
@@ -30,16 +111,10 @@
 
     <style name="body_style">
         <item name="android:textSize">20dp</item>
-        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textColor">@color/textAccent</item>
         <item name="android:layout_marginLeft">25dp</item>
         <item name="android:lineSpacingMultiplier">1.1</item>
         <item name="android:layout_marginTop">5dp</item>
-    </style>
-
-    <style name="textViewStyle">
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor"> @color/colorAccent</item>
-
     </style>
 
     <style name="number_style">
@@ -60,16 +135,9 @@
         <item name="android:layout_height">65dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:padding">20dp</item>
-<!--        <item name="android:paddingLeft">50dip</item>-->
-<!--        <item name="android:paddingRight">26dip</item>-->
-
-        <!--        <item name="android:textStyle">bold</item-->
         <item name="android:gravity">center</item>
-<!--        <item name="android:includeFontPadding">false</item>-->
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/backgroundButtonText</item>
         <item name="android:textSize">20dp</item>
-
     </style>
-
 
 </resources>

@@ -104,7 +104,6 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             tv_last_name = itemView.findViewById(R.id.last_name_contact);
-//            ImageView img = itemView.findViewById(R.id.img_contact);
             item_contact = itemView.findViewById(R.id.contact_item_id);
             itemView.setOnCreateContextMenuListener(this);
         }

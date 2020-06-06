@@ -13,7 +13,7 @@
     <color name="backgroundButtonText">@color/colorGreyLight</color>
 
     <color name="editTextColor">@color/colorAccent</color>
-    <color name="textFragment">@color/colorLight</color>
+    <color name="textFragment">@color/colorAccent</color>
     <color name="textAccent">@color/colorDarkAccent</color>
     <color name="textToolTitle">#F3FDF6EF</color>
 

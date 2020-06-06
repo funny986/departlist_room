@@ -141,9 +141,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             butn[2] = findViewById(R.id.btn_03);
             butn[3] = findViewById(R.id.btn_04);
             butn[4] = findViewById(R.id.btn_05);
+
         dep = resources.getStringArray(R.array.lists);
         departDataBase = App.getInstance().getDataBase();
         lstContact = new ArrayList<>();
+
         for (int i=0; i < butn.length; i++) {
             butn[i].setText(dep[i]);
             butn[i].setOnClickListener(this);
